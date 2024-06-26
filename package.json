@@ -19,6 +19,8 @@
   "homepage": "https://github.com/G4-2024/Trabajo-Final-Js-Node-grupo25#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.10.1",
+    "sqlite3": "^5.1.7"
   }
 }
