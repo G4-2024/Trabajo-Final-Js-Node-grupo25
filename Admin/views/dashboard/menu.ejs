@@ -1,0 +1,118 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a href="" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <img
+          src="../IMG/logoG4.png"
+          alt="Brand Logo"
+          class="logo-icon me-2"
+          style="width: 50px"
+        />
+      </span>
+      <span class="app-brand-text menu-text fw-bolder ms-2">Zapatilleria</span>
+    </a>
+
+    <a
+      href="javascript:void(0);"
+      class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"
+    >
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    <li class="menu-item active">
+      <a href="/Admin/index" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Analytics">Dashboard</div>
+      </a>
+    </li>
+
+    <!-- Acceso directo -->
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Acceso directo al sitio</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="/" class="menu-link">
+            <div data-i18n="Without menu">Index</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="Without navbar">Productos</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Administrador de usuarios  -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Administrar usuarios</span>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div data-i18n="ConfiguracionCuentas">
+          Configuracion <br />de cuenta
+        </div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="listaUsuarios">Listado de usuarios</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="ABMusuarios">ABM Usuarios</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <ul class="menu-sub"></ul>
+    </li>
+    <!-- Administrar Ventas -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Administrar Ventas</span>
+    </li>
+    <!-- Ventas -->
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-detail"></i>
+        <div data-i18n="ventas">Ventas</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="listarVentas">Listar ventas</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-detail"></i>
+        <div data-i18n="publicaciones">Publicaciones</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="/Admin/listarProductos" class="menu-link">
+            <div data-i18n="productos">Listar productos</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="ABMproductos">ABM Productos</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</aside>
