@@ -137,13 +137,22 @@ function pagarClicked() {
 
     // Preparar datos para enviar al servidor
     var productos = [];
-    var total = document.getElementsByClassName('carrito-total')[0].innerText;
+    var totalText = document.querySelector('.carrito-precio-total').innerText;
+
+    // Parsear y limpiar el total
+    var total = parseFloat(totalText.replace(/[^\d.-]/g, '')); // Elimina caracteres no numéricos
+
+    // Verificar que el total sea un número válido
+    if (isNaN(total)) {
+        alert('Error en el cálculo del total. No se puede procesar la venta.');
+        return;
+    }
 
     for (var i = 0; i < carritoItems.length; i++) {
         var item = carritoItems[i];
-        var titulo = item.getElementsByClassName('carrito-item-titulo')[0].innerText;
-        var color = item.getElementsByClassName('carrito-item-color')[0].innerText;
-        var precio = item.getElementsByClassName('carrito-item-precio')[0].innerText;
+        var titulo = item.querySelector('.carrito-item-titulo').innerText;
+        var color = item.querySelector('.carrito-item-color').innerText;
+        var precio = item.querySelector('.carrito-item-precio').innerText;
 
         productos.push({ titulo: titulo, color: color, precio: precio });
     }
@@ -154,7 +163,7 @@ function pagarClicked() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productos: productos, total: total }),
+        body: JSON.stringify({ productos: productos, total: total.toString() }), // Convertir total a cadena de texto
     })
     .then(response => {
         if (!response.ok) {
@@ -167,7 +176,7 @@ function pagarClicked() {
         alert('Venta registrada exitosamente');
         
         // Limpiar el carrito
-        var carritoItems = document.getElementsByClassName('carrito-items')[0];
+        var carritoItems = document.querySelector('.carrito-items');
         while (carritoItems.hasChildNodes()){
             carritoItems.removeChild(carritoItems.firstChild);
         }
@@ -178,3 +187,4 @@ function pagarClicked() {
         alert('Error al registrar la venta');
     });
 }
+

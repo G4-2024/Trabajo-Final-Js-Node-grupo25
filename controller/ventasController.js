@@ -1,11 +1,14 @@
-// ventasController.js
-
 const db = require('../db/db');
 
 const crearVenta = (req, res) => {
     const { productos, total } = req.body;
-    // Eliminar símbolo de dólar y coma del total y convertir a número
-    const totalNumerico = parseFloat(total.replace('$', '').replace(',', '.'));
+    let totalNumerico = parseFloat(total);
+
+    // Verificar si total es un número válido
+    if (isNaN(totalNumerico)) {
+        console.error('El total no es un número válido:', total);
+        return res.status(400).json({ error: 'El total no es un número válido' });
+    }
 
     const query = 'INSERT INTO ventas (productos, total) VALUES (?, ?)';
 
@@ -17,6 +20,7 @@ const crearVenta = (req, res) => {
         res.status(201).json({ message: 'Venta registrada exitosamente' });
     });
 };
+
 // Función para obtener todas las ventas
 const obtenerVentas = (req, res) => {
     const query = 'SELECT * FROM ventas';
@@ -29,5 +33,4 @@ const obtenerVentas = (req, res) => {
         res.status(200).json(results);
     });
 };
-
 module.exports = { crearVenta, obtenerVentas };
