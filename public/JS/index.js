@@ -1,3 +1,5 @@
+const { json } = require("express");
+
 // archivo validacion.js
 function validarFormulario() {
     const nombre = document.getElementById('nombre').value;
@@ -27,4 +29,13 @@ function validarFormulario() {
     }
     return true;
 }
+
+
+
+
+
+
+
+
+    
 
