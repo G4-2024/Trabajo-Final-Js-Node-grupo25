@@ -4,6 +4,7 @@ let port = 3000
 const path = require ('path');
 
 const productosRouter = require('./routes/productos')
+const ventasRoutes = require('./routes/ventasRoutes');
 
 app.use(express.json());
 
@@ -104,3 +105,4 @@ app.get("/registroVendedores", (req, res) => {
 //   console.log(`Servidor escuchando en el puerto ${PORT}`);
 // });
 //================================================================================
+app.use('/ventas', ventasRoutes);

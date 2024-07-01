@@ -125,15 +125,56 @@ function agregarItemAlCarrito(id,titulo,color,precio,imagenSrc){
 
 }
 
-function pagarClicked(){
-    alert("Gracias por su compra");
+function pagarClicked() {
+    // Obtener todos los elementos del carrito
+    var carritoItems = document.getElementsByClassName('carrito-item');
 
-    //se elimina los items del carrito
-    var carritoItems = document.getElementsByClassName('carrito-items')[0];
-    while (carritoItems.hasChildNodes()){
-        carritoItems.removeChild(carritoItems.firstChild);
+    // Verificar si el carrito está vacío
+    if (carritoItems.length === 0) {
+        alert('El carrito está vacío. No se puede procesar la venta.');
+        return;
     }
-    actualizarTotalCarrito();
+
+    // Preparar datos para enviar al servidor
+    var productos = [];
+    var total = document.getElementsByClassName('carrito-total')[0].innerText;
+
+    for (var i = 0; i < carritoItems.length; i++) {
+        var item = carritoItems[i];
+        var titulo = item.getElementsByClassName('carrito-item-titulo')[0].innerText;
+        var color = item.getElementsByClassName('carrito-item-color')[0].innerText;
+        var precio = item.getElementsByClassName('carrito-item-precio')[0].innerText;
+
+        productos.push({ titulo: titulo, color: color, precio: precio });
+    }
+
+    // Realizar la solicitud POST al servidor
+    fetch('/ventas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productos: productos, total: total }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al registrar la venta');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Mostrar mensaje de éxito o realizar otras acciones necesarias
+        alert('Venta registrada exitosamente');
+        
+        // Limpiar el carrito
+        var carritoItems = document.getElementsByClassName('carrito-items')[0];
+        while (carritoItems.hasChildNodes()){
+            carritoItems.removeChild(carritoItems.firstChild);
+        }
+        actualizarTotalCarrito();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al registrar la venta');
+    });
 }
-
-
