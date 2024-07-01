@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -35,15 +36,15 @@
                         <a href="/registroVendedores">Vendedores</a>
                     </div>
                 </div>
+            </div>
         </div>
     </header>
     <main>
         <div id="oferta" class="contenedor-titulo">
             <h1 class="titulo-oferta">Nuestros Productos</h1>
-            
         </div>
         <button id="mostrar-crear-producto-btn" class="boton-crear-producto" type="submit">Crear Nuevo Producto</button>
-        <div class="formulario">           
+        <div class="formulario">
             <form id="crear-producto-form" class="hidden" enctype="multipart/form-data">
                 <h3>Crear Producto</h3>
                 <label for="titulo">Titulo</label>
@@ -53,7 +54,7 @@
                 <label for="precio">Precio</label>
                 <input type="number" id="precio" name="precio" required>
                 <label for="archivo">Foto</label>
-                <input type="file" id="archivo" name="archivo" >
+                <input type="file" id="archivo" name="archivo">
                 <button type="submit">Crear Producto</button>
             </form>
         </div>
@@ -68,28 +69,22 @@
                 <label for="edit-precio">Precio</label>
                 <input type="number" id="edit-precio" name="edit-precio" required>
                 <label for="edit-archivo">Foto</label>
-                <input type="file" id="edit-archivo" name="edit-archivo" >
+                <input type="file" id="edit-archivo" name="edit-archivo">
                 <button type="submit">Actualizar Producto</button>
-
             </form>
-            
         </div>
         <div class="titulo-lista-productos">
             <h2>Lista De Nuestros Productos</h2>
             <button id="listar-productos-btn" class="boton-listar-items">Listar Productos</button>
-            
         </div>
         <section class="contenedor">
-            
-            <div class="contenedor-items" id="lista-productos" > 
-                
+            <div class="contenedor-items" id="lista-productos">
             </div>
             <div class="carrito">
                 <div class="header-carrito">
                     <h3>Tu carrito</h3>
                 </div>
                 <div class="carrito-items">
-                    
                 </div>
                 <div class="carrito-total">
                     <div class="fila">
@@ -104,8 +99,9 @@
             <h1>Lista de Ventas Realizadas</h1>
         </div>
         <div>
-            <button id="listar-ventas-btn" class="boton-listar-items">Listar las Ventas</button>
-            <ul id="lista-ventas">
+            <button id="listar-ventas-btn" class="boton-listar-items" type="button">Listar las Ventas</button>
+            <ul id="lista-ventas" class="hidden">
+                <!-- Aquí se listarán dinámicamente las ventas -->
             </ul>
         </div>
     </main>
@@ -171,7 +167,6 @@
     <script src="/JS/index.js"></script>
     <script src="/JS/scripts.js"></script>
     <script src="/JS/funcionalidad.js" async></script>
-    {% comment %}     comentario  {% endcomment %}
 </body>
 
 </html>

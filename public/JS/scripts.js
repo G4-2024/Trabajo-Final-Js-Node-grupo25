@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editarProductoForm = document.getElementById('editar-producto-form');
     const listarProductosBtn = document.getElementById('listar-productos-btn');
     const listaProductos = document.getElementById('lista-productos');
-    const listarVentasBtn = document.getElementById('listar-ventas-btn'); // Botón para listar ventas
+    const listarVentasBtn = document.getElementById('listar-ventas-btn'); // Nuevo botón para listar ventas
     const listaVentas = document.getElementById('lista-ventas'); // Contenedor para mostrar las ventas
 
     // Función para mostrar u ocultar el formulario de creación de productos
@@ -62,8 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Evento para listar productos existentes
     listarProductosBtn.addEventListener('click', listarProductos);
 
-    // Evento para listar ventas existentes
-    listarVentasBtn.addEventListener('click', listarVentas);
+    // Evento para listar ventas realizadas
+    listarVentasBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/ventas'); // Ajusta la ruta según la implementación en tu servidor
+            const ventas = await response.json();
+
+            listaVentas.innerHTML = ''; // Limpiar la lista antes de agregar nuevas ventas
+
+            ventas.forEach(venta => {
+                const li = document.createElement('li');
+                li.textContent = `ID: ${venta.id}, Productos: ${venta.productos.length}, Total: ${venta.total}`;
+                listaVentas.appendChild(li);
+            });
+        } catch (error) {
+            console.error('Error al cargar las ventas:', error);
+            alert('Error al cargar las ventas');
+        }
+    });
 
     // Función para listar productos desde el servidor
     async function listarProductos() {
@@ -117,31 +133,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Error al cargar los productos');
         }
     }
-
-    // Función para listar ventas desde el servidor
-    async function listarVentas() {
-        try {
-            const response = await fetch('/ventas');
-            if (!response.ok) {
-                throw new Error('Error al obtener las ventas');
-            }
-            const ventas = await response.json();
-
-            listaVentas.innerHTML = '';
-
-            ventas.forEach(venta => {
-                const li = document.createElement('li');
-                li.textContent = JSON.stringify(venta); // Mostrar la venta como JSON
-                listaVentas.appendChild(li);
-            });
-
-            // Mostrar la lista de ventas y ocultar productos
-            listaVentas.style.display = 'block';
-            listaProductos.style.display = 'none';
-
-        } catch (error) {
-            console.error('Error al listar las ventas:', error);
-            alert('Error al cargar las ventas');
-        }
-    }
 });
+
