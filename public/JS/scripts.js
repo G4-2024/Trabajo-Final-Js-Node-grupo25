@@ -62,24 +62,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Evento para listar productos existentes
     listarProductosBtn.addEventListener('click', listarProductos);
 
-    // Evento para listar ventas realizadas
     listarVentasBtn.addEventListener('click', async () => {
         try {
             const response = await fetch('/ventas'); // Ajusta la ruta según la implementación en tu servidor
             const ventas = await response.json();
-
-            listaVentas.innerHTML = ''; // Limpiar la lista antes de agregar nuevas ventas
-
+    
+            listaVentas.innerHTML = ''; 
+    
             ventas.forEach(venta => {
                 const li = document.createElement('li');
-                li.textContent = `ID: ${venta.id}, Productos: ${venta.productos.length}, Total: ${venta.total}`;
+                li.classList.add('venta-item');
+                const fecha = new Date(venta.fecha).toLocaleString();
+                li.innerHTML = `
+                    <div class="venta-info">
+                        <span class="venta-id">Venta ID: ${venta.id}</span>
+                        <span class="venta-fecha">Fecha: ${fecha}</span>
+                        <div class="venta-detalle">
+                            <span class="venta-productos">Productos: ${venta.productos}</span>
+                            <span class="venta-total">Total: $${venta.total}</span>
+                        </div>
+                    </div>`;
                 listaVentas.appendChild(li);
             });
+    
+            // Alternar la visibilidad de listaVentas
+            listaVentas.classList.toggle('hidden');
         } catch (error) {
             console.error('Error al cargar las ventas:', error);
             alert('Error al cargar las ventas');
         }
     });
+    
 
     // Función para listar productos desde el servidor
     async function listarProductos() {
@@ -134,4 +147,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
