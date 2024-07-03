@@ -98,12 +98,22 @@
         <div class="contenedor-titulo">
             <h1>Lista de Ventas Realizadas</h1>
         </div>
-            <div>
-                <button id="listar-ventas-btn" class="boton-listar-items" type="button">Listar las Ventas</button>
-                <ul id="lista-ventas" class="hidden">
-                    <!-- Aquí se listarán dinámicamente las ventas -->
-                </ul>
-            </div>
+        <div class="content">
+            <h2>Lista de Ventas</h2>
+            <button id="listarVentasBtn">Mostrar Ventas</button>
+            <table id="tablaVentas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Productos</th>
+                        <th>Total</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaVentasBody"></tbody>
+            </table>
+        </div>
+    
     </main>
     <footer>
         <div class="footer-arriba">

@@ -787,52 +787,51 @@ form button[type="submit"]:hover {
 
 }
 
-/* Estilos para la lista de ventas */
-.ventas-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0;
-    list-style-type: none;
+/* Estilo para la tabla de ventas */
+#tablaVentas {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
 }
 
-.venta-item {
-    flex: 0 0 calc(33.33% - 20px); /* Ajustar el ancho de cada tarjeta según el diseño deseado */
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    transition: transform 0.3s ease;
+#tablaVentas th, #tablaVentas td {
+    border: 1px solid #dddddd;
+    padding: 8px;
 }
 
-.venta-item:hover {
-    transform: translateY(-5px);
-}
-
-.venta-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.venta-id {
+#tablaVentas th {
+    background-color: #f2f2f2;
     font-weight: bold;
 }
 
-.venta-fecha {
-    font-style: italic;
-    color: #777777;
+#tablaVentas tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.venta-detalle {
-    margin-top: 8px;
+#tablaVentas tr:hover {
+    background-color: #f1f1f1;
 }
 
-.venta-productos,
-.venta-total {
+/* Estilo para el botón de listar ventas */
+#listarVentasBtn {
+    font-size: 20px;
     display: block;
-    margin-bottom: 5px;
+    margin: 10px auto;
+    border: none;
+    background: rgb(3, 243, 63);
+    color: #080808;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+#listarVentasBtn:hover {
+    background-color: rgb(0, 200, 50);
+    transform: scale(1.05);
+}
 
 
 

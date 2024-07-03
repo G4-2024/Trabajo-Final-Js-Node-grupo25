@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const editarProductoForm = document.getElementById('editar-producto-form');
     const listarProductosBtn = document.getElementById('listar-productos-btn');
     const listaProductos = document.getElementById('lista-productos');
-    const listarVentasBtn = document.getElementById('listar-ventas-btn'); // Nuevo botón para listar ventas
-    const listaVentas = document.getElementById('lista-ventas'); // Contenedor para mostrar las ventas
+
+   
 
     // Función para mostrar u ocultar el formulario de creación de productos
     mostrarCrearProductoBtn.addEventListener('click', () => {
@@ -62,37 +62,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Evento para listar productos existentes
     listarProductosBtn.addEventListener('click', listarProductos);
 
+    const listarVentasBtn = document.getElementById('listarVentasBtn');
+    const tablaVentasBody = document.getElementById('tablaVentasBody');
+
     listarVentasBtn.addEventListener('click', async () => {
         try {
             const response = await fetch('/ventas'); // Ajusta la ruta según la implementación en tu servidor
+            if (!response.ok) {
+                throw new Error('Error al obtener las ventas');
+            }
             const ventas = await response.json();
-    
-            listaVentas.innerHTML = ''; 
-    
+
+            tablaVentasBody.innerHTML = ''; // Limpiar el cuerpo de la tabla antes de mostrar nuevos datos
+
+            // Crear filas de la tabla para cada venta
             ventas.forEach(venta => {
-                const li = document.createElement('li');
-                li.classList.add('venta-item');
+                const row = document.createElement('tr');
                 const fecha = new Date(venta.fecha).toLocaleString();
-                li.innerHTML = `
-                    <div class="venta-info">
-                        <span class="venta-id">Venta ID: ${venta.id}</span>
-                        <span class="venta-fecha">Fecha: ${fecha}</span>
-                        <div class="venta-detalle">
-                            <span class="venta-productos">Productos: ${venta.productos}</span>
-                            <span class="venta-total">Total: $${venta.total}</span>
-                        </div>
-                    </div>`;
-                listaVentas.appendChild(li);
+                row.innerHTML = `
+                    <td>${venta.id}</td>
+                    <td>${venta.productos}</td>
+                    <td>${venta.total}</td>
+                    <td>${fecha}</td>
+                `;
+                tablaVentasBody.appendChild(row);
             });
-    
-            // Alternar la visibilidad de listaVentas
-            listaVentas.classList.toggle('hidden');
+
+            // Alternar la visibilidad de tablaVentas
+            tablaVentasBody.classList.toggle('hidden');
         } catch (error) {
             console.error('Error al cargar las ventas:', error);
             alert('Error al cargar las ventas');
         }
     });
-    
 
     // Función para listar productos desde el servidor
     async function listarProductos() {
