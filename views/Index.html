@@ -1,182 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zapatilleria</title>
-    <link rel="stylesheet" href="/CSS/estilos.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@200..900&display=swap"
-        rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="/CSS/estilos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <header id="inicio">
-        <div class="navbar">
-            <img src="/IMG/logoG4.png" alt="Logotipo">
-            <div class="contenedor-envios">
-                <p class="envios-gratis">Envios gratis a partir de los $30000</p>
-                <img src="/IMG/envio-gratis.png" alt="envio">
-            </div>
-            <div class="barra-desplegable">
-                <!-- items de navegacion -->
-                <a href="/">Inicio</a>
-                <!-- item modelos -->
-                <a href="#oferta">Nuestros Modelos</a>
-                <div class="desplegable">
-                    <!-- Boton que se desplega al pasar el mouse -->
-                    <button class="desplegableBtn">Registro</button>
-                    <div class="desplegableContenido">
-                        <a href="/registroUsuario">Usuarios</a>
-                        <a href="/registroVendedores">Vendedores</a>
-                    </div>
-                </div>
-            </div>
+      <div class="navbar">
+        <img src="/IMG/logoG4.png" alt="Logotipo" />
+        <div class="contenedor-envios">
+          <p class="envios-gratis">Envios gratis a partir de los $30000</p>
+          <img src="/IMG/envio-gratis.png" alt="envio" />
         </div>
+        <div class="barra-desplegable">
+          <!-- items de navegacion -->
+          <a href="/">Inicio</a>
+          <!-- item modelos -->
+          <a href="#oferta">Nuestros Modelos</a>
+          <div class="desplegable">
+            <!-- Boton que se desplega al pasar el mouse -->
+            <button class="desplegableBtn">Registro</button>
+            <div class="desplegableContenido">
+              <a href="/registroUsuario">Usuarios</a>
+              <a href="/registroVendedores">Vendedores</a>
+              <a href="/Admin/listarUsuariosAdm">Administrador</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
     <main>
-        <div id="oferta" class="contenedor-titulo">
-            <h1 class="titulo-oferta">Nuestros Productos</h1>
-        </div>
-        <button id="mostrar-crear-producto-btn" class="boton-crear-producto" type="submit">Crear Nuevo Producto</button>
-        <div class="formulario">
-            <form id="crear-producto-form" class="hidden" enctype="multipart/form-data">
-                <h3>Crear Producto</h3>
-                <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" name="titulo" required>
-                <label for="color">Color</label>
-                <input type="text" id="color" name="color" required>
-                <label for="precio">Precio</label>
-                <input type="number" id="precio" name="precio" required>
-                <label for="archivo">Foto</label>
-                <input type="file" id="archivo" name="archivo">
-                <button type="submit">Crear Producto</button>
-            </form>
-        </div>
-        <div class="formulario">
-            <form id="editar-producto-form" class="hidden" enctype="multipart/form-data">
-                <h3>Editar Producto</h3>
-                <input type="hidden" id="editId-producto" name="editId-producto" required>
-                <label for="edit-titulo">Titulo</label>
-                <input type="text" id="edit-titulo" name="edit-titulo" required>
-                <label for="edit-color">Color</label>
-                <input type="text" id="edit-color" name="edit-color" required>
-                <label for="edit-precio">Precio</label>
-                <input type="number" id="edit-precio" name="edit-precio" required>
-                <label for="edit-archivo">Foto</label>
-                <input type="file" id="edit-archivo" name="edit-archivo">
-                <button type="submit">Actualizar Producto</button>
-            </form>
-        </div>
-        <div class="titulo-lista-productos">
-            <h2>Lista De Nuestros Productos</h2>
-            <button id="listar-productos-btn" class="boton-listar-items">Listar Productos</button>
-        </div>
-        <section class="contenedor">
-            <div class="contenedor-items" id="lista-productos">
+      <div id="oferta" class="contenedor-titulo">
+        <h1 class="titulo-oferta">Nuestros Productos</h1>
+      </div>
+      <button
+        id="mostrar-crear-producto-btn"
+        class="boton-crear-producto"
+        type="submit"
+      >
+        Crear Nuevo Producto
+      </button>
+      <div class="formulario">
+        <form
+          id="crear-producto-form"
+          class="hidden"
+          enctype="multipart/form-data"
+        >
+          <h3>Crear Producto</h3>
+          <label for="titulo">Titulo</label>
+          <input type="text" id="titulo" name="titulo" required />
+          <label for="color">Color</label>
+          <input type="text" id="color" name="color" required />
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" name="precio" required />
+          <label for="archivo">Foto</label>
+          <input type="file" id="archivo" name="archivo" />
+          <button type="submit">Crear Producto</button>
+        </form>
+      </div>
+      <div class="formulario">
+        <form
+          id="editar-producto-form"
+          class="hidden"
+          enctype="multipart/form-data"
+        >
+          <h3>Editar Producto</h3>
+          <input
+            type="hidden"
+            id="editId-producto"
+            name="editId-producto"
+            required
+          />
+          <label for="edit-titulo">Titulo</label>
+          <input type="text" id="edit-titulo" name="edit-titulo" required />
+          <label for="edit-color">Color</label>
+          <input type="text" id="edit-color" name="edit-color" required />
+          <label for="edit-precio">Precio</label>
+          <input type="number" id="edit-precio" name="edit-precio" required />
+          <label for="edit-archivo">Foto</label>
+          <input type="file" id="edit-archivo" name="edit-archivo" />
+          <button type="submit">Actualizar Producto</button>
+        </form>
+      </div>
+      <div class="titulo-lista-productos">
+        <h2>Lista De Nuestros Productos</h2>
+        <button id="listar-productos-btn" class="boton-listar-items">
+          Listar Productos
+        </button>
+      </div>
+      <section class="contenedor">
+        <div class="contenedor-items" id="lista-productos"></div>
+        <div class="carrito">
+          <div class="header-carrito">
+            <h3>Tu carrito</h3>
+          </div>
+          <div class="carrito-items"></div>
+          <div class="carrito-total">
+            <div class="fila">
+              <strong>Tu Total</strong>
+              <span class="carrito-precio-total">$0</span>
             </div>
-            <div class="carrito">
-                <div class="header-carrito">
-                    <h3>Tu carrito</h3>
-                </div>
-                <div class="carrito-items">
-                </div>
-                <div class="carrito-total">
-                    <div class="fila">
-                        <strong>Tu Total</strong>
-                        <span class="carrito-precio-total">$0</span>
-                    </div>
-                    <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
-                </div>
-            </div>
-        </section>
-        <div class="contenedor-titulo">
-            <h1>Lista de Ventas Realizadas</h1>
+            <button class="btn-pagar">
+              Pagar <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
         </div>
-        <div class="content">
-            <h2>Lista de Ventas</h2>
-            <button id="listarVentasBtn">Mostrar Ventas</button>
-            <table id="tablaVentas">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Productos</th>
-                        <th>Total</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaVentasBody"></tbody>
-            </table>
-        </div>
-    
+      </section>
+      <div class="contenedor-titulo">
+        <h1>Lista de Ventas Realizadas</h1>
+      </div>
+      <div class="content">
+        <h2>Lista de Ventas</h2>
+        <button id="listarVentasBtn">Mostrar Ventas</button>
+        <table id="tablaVentas">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Productos</th>
+              <th>Total</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVentasBody"></tbody>
+        </table>
+      </div>
     </main>
     <footer>
-        <div class="footer-arriba">
-            <div class="footer-izquierdo">
-                <div class="footer-section">
-                    <h3>Metodos de pago</h3>
-                    <img src="/IMG/american-express.png" alt="Tarjeta 1">
-                    <img src="/IMG/diners-club_196548.png" alt="Tarjeta 2">
-                    <img src="/IMG/mastercard.png" alt="Tarjeta 3">
-                    <img src="/IMG/visa.png" alt="Tarjeta 4">
-                    <img src="/IMG/naranja.png" alt="Tarjeta 5">
-                    <div class="iconosDiferenciales">
-                        <img src="/IMG/mercadopago.png" alt="Tarjeta 6">
-                        <img src="/IMG/rapipago.png" alt="Tarjeta 7">
-                        <img src="/IMG/efectivo.png" alt="Tarjeta 8">
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Medios de envío</h3>
-                    <img src="/IMG/correo-argentino.png" alt="Envío 1">
-                    <img src="/IMG/acordar.png" alt="Envío 2">
-                    <img src="/IMG/personalizado.png" alt="Envío 3">
-                </div>
+      <div class="footer-arriba">
+        <div class="footer-izquierdo">
+          <div class="footer-section">
+            <h3>Metodos de pago</h3>
+            <img src="/IMG/american-express.png" alt="Tarjeta 1" />
+            <img src="/IMG/diners-club_196548.png" alt="Tarjeta 2" />
+            <img src="/IMG/mastercard.png" alt="Tarjeta 3" />
+            <img src="/IMG/visa.png" alt="Tarjeta 4" />
+            <img src="/IMG/naranja.png" alt="Tarjeta 5" />
+            <div class="iconosDiferenciales">
+              <img src="/IMG/mercadopago.png" alt="Tarjeta 6" />
+              <img src="/IMG/rapipago.png" alt="Tarjeta 7" />
+              <img src="/IMG/efectivo.png" alt="Tarjeta 8" />
             </div>
-            <div class="footer-centro">
-                <div class="footer-section">
-                    <h3>Nuestras Redes sociales</h3>
-                    <a href="https://twitter.com/dexter_arg">
-                        <img src="/IMG/twitter_2504947.png" alt="twitter">
-                    </a>
-                    <a href="https://www.facebook.com/dexter.arg/">
-                        <img src="/IMG/facebook_2504903.png" alt="facebook">
-                    </a>
-                    <a href="https://www.instagram.com/dexterarg/">
-                        <img src="/IMG/instagram_2111463.png" alt="instagram">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-derecho">
-                <div class="footer-section">
-                    <h3>Contactos</h3>
-                    <a href="https://wa.me/+5492945587742" target="_blank">
-                        <img src="/IMG/whatsapp_2504957.png" alt="WhatsApp">
-                    </a>
-                    <a href="mailto:nachocaceres1983@gmail.com" target="_blank">
-                        <img src="/IMG/email_726623.png" alt="Email">
-                    </a>
-                    <a href="https://t.me/nachoalf" target="_blank">
-                        <img src="/IMG/telegram_2504941.png" alt="Telegram">
-                    </a>
-                </div>
-            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Medios de envío</h3>
+            <img src="/IMG/correo-argentino.png" alt="Envío 1" />
+            <img src="/IMG/acordar.png" alt="Envío 2" />
+            <img src="/IMG/personalizado.png" alt="Envío 3" />
+          </div>
         </div>
-        <div class="firma-footer">
-            <p>Pagina creada por grupo 25</p>
-            <div class="iconos-firma">
-                <img src="/IMG/DATAWEB.jpg" alt="">
-            </div>
+        <div class="footer-centro">
+          <div class="footer-section">
+            <h3>Nuestras Redes sociales</h3>
+            <a href="https://twitter.com/dexter_arg">
+              <img src="/IMG/twitter_2504947.png" alt="twitter" />
+            </a>
+            <a href="https://www.facebook.com/dexter.arg/">
+              <img src="/IMG/facebook_2504903.png" alt="facebook" />
+            </a>
+            <a href="https://www.instagram.com/dexterarg/">
+              <img src="/IMG/instagram_2111463.png" alt="instagram" />
+            </a>
+          </div>
         </div>
+        <div class="footer-derecho">
+          <div class="footer-section">
+            <h3>Contactos</h3>
+            <a href="https://wa.me/+5492945587742" target="_blank">
+              <img src="/IMG/whatsapp_2504957.png" alt="WhatsApp" />
+            </a>
+            <a href="mailto:nachocaceres1983@gmail.com" target="_blank">
+              <img src="/IMG/email_726623.png" alt="Email" />
+            </a>
+            <a href="https://t.me/nachoalf" target="_blank">
+              <img src="/IMG/telegram_2504941.png" alt="Telegram" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="firma-footer">
+        <p>Pagina creada por grupo 25</p>
+        <div class="iconos-firma">
+          <img src="/IMG/DATAWEB.jpg" alt="" />
+        </div>
+      </div>
     </footer>
     <script src="/JS/index.js"></script>
     <script src="/JS/scripts.js"></script>
     <script src="/JS/funcionalidad.js" async></script>
-</body>
-
+  </body>
 </html>

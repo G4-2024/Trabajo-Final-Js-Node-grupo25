@@ -1,0 +1,100 @@
+<%- include('header') %>
+
+<div class="content-wrapper">
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+      <span class="text-muted fw-light">Usuarios /</span> Administrador
+    </h4>
+
+    <hr class="my-5" />
+
+    <div class="card">
+      <h5 class="card-header">Administradores del sitio</h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% usuarios.forEach(usuario => { %>
+            <tr>
+              <td><%= usuario.ad_id %></td>
+              <td><%= usuario.ad_user %></td>
+              <td><%= usuario.ad_correo %></td>
+              <td><%= usuario.ad_telefono %></td>
+
+              <td>
+                <div class="dropdown">
+                  <button
+                    type="button"
+                    class="btn p-0 dropdown-toggle hide-arrow"
+                    data-bs-toggle="dropdown"
+                  >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a
+                      class="dropdown-item delete-user"
+                      href="javascript:void(0);"
+                      data-id="<%= usuario.ad_id %>"
+                    >
+                      <i class="bx bx-trash me-1"></i> Delete
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="my-5" />
+  </div>
+
+  <div class="content-backdrop fade"></div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteLinks = document.querySelectorAll(".delete-user");
+
+    deleteLinks.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const userId = this.getAttribute("data-id");
+
+
+        if (confirm("¿Estás seguro de eliminar este usuario?")) {
+       
+          fetch(`/Admin/deleteUser/${userId}`, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Error al eliminar el usuario");
+              }
+              return response.json();
+            })
+            .then((data) => {
+        
+              console.log("Usuario eliminado correctamente", data);
+             
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+             
+            });
+        }
+      });
+    });
+  });
+</script>
+<%- include('footer') %>

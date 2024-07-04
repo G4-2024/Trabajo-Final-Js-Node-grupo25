@@ -1,5 +1,5 @@
 //======================================conexion MYSql=======================================
-const mysql = require('mysql2');
+/* const mysql = require('mysql2');
 require('dotenv').config();
 
 const connection = mysql.createConnection({
@@ -18,7 +18,7 @@ connection.connect((err) => {
     console.log("Conectado exitosamente a la Base de Datos");
 });
 
-module.exports = connection;
+module.exports = connection; */
 
 
 //=============================== conexion SQLite============================================
