@@ -297,3 +297,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar la lista de productos al cargar la página
     listarProductos();
 });
+
+const localesBtn = document.getElementById('localesBtn');
+const listaLocales = document.getElementById('lista-locales');
+const tablaLocalesBody = document.getElementById('tablaLocalesBody');
+
+localesBtn.addEventListener('click', async () => {
+    if (listaLocales.style.display === 'none') {
+        try {
+            const response = await fetch('/locales'); // Ajusta la ruta según la implementación en tu servidor
+            if (!response.ok) {
+                throw new Error('Error al obtener los locales');
+            }
+            const locales = await response.json();
+
+            tablaLocalesBody.innerHTML = ''; // Limpiar el cuerpo de la tabla antes de mostrar nuevos datos
+
+            // Crear filas de la tabla para cada local
+            locales.forEach(local => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${local.id}</td>
+                    <td>${local.direccion}</td>
+                    <td>${local.localidad}</td>
+                    <td>${local.telefono}</td>
+                    <td>${local.horario}</td>
+                `;
+                tablaLocalesBody.appendChild(row);
+            });
+
+            // Mostrar la lista de locales
+            listaLocales.style.display = 'block';
+        } catch (error) {
+            console.error('Error al cargar los locales:', error);
+            alert('Error al cargar los locales');
+        }
+    } else {
+        // Ocultar la lista de locales si ya está visible
+        listaLocales.style.display = 'none';
+    }
+});

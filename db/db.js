@@ -1,24 +1,24 @@
 //======================================conexion MYSql=======================================
-/* const mysql = require('mysql2');
-require('dotenv').config();
+    const mysql = require('mysql2');
+    require('dotenv').config();
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
+    const connection = mysql.createConnection({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
+    });
 
-connection.connect((err) => {
-    if (err) {
-        console.error("Error en la conexión a la base de datos:", err);
-        return;
-    }
+    connection.connect((err) => {
+        if (err) {
+            console.error("Error en la conexión a la base de datos:", err);
+            return;
+        }
 
-    console.log("Conectado exitosamente a la Base de Datos");
-});
+        console.log("Conectado exitosamente a la Base de Datos");
+    });
 
-module.exports = connection; */
+    module.exports = connection; 
 
 
 //=============================== conexion SQLite============================================

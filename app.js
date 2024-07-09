@@ -5,6 +5,7 @@ const path = require("path");
 
 const productosRouter = require("./routes/productos");
 const ventasRoutes = require("./routes/ventasRoutes");
+const localesRoutes = require("./routes/localesRoutes");
 const adminController = require("./controller/adminController");
 
 app.use(express.json());
@@ -87,3 +88,4 @@ app.get("/registroVendedores", (req, res) => {
 // });
 //================================================================================
 app.use("/ventas", ventasRoutes);
+app.use("/locales", localesRoutes);
